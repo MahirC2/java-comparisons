@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentMap;
 
 import benchmarks.map.classes.Keys.*;
 
-class ObjectMap<T>
+public class ObjectMap<T>
 {
     private final ConcurrentMap<String, T> key1ToValue = new ConcurrentHashMap<>();
     private final ConcurrentMap<Key2, T>   key2ToValue = new ConcurrentHashMap<>();
@@ -15,7 +15,7 @@ class ObjectMap<T>
     private final T                        noKeyObject;
     private final ObjectFactory<T>         objectFactory;
     
-    ObjectMap(ObjectFactory<T> objectFactory)
+    public ObjectMap(ObjectFactory<T> objectFactory)
     {
         this.noKeyObject = objectFactory.create();
         this.objectFactory = objectFactory;
@@ -164,14 +164,5 @@ class ObjectMap<T>
     {
         Key5 key = new Key5(s1, s2, s3, s4, s5);
         return key5ToValue.computeIfAbsent(key, k -> objectFactory.create(s1, s2, s3, s4, s5));
-    }
-    
-    public void clear()
-    {
-        key1ToValue.clear();
-        key2ToValue.clear();
-        key3ToValue.clear();
-        key4ToValue.clear();
-        key5ToValue.clear();
     }
 }
