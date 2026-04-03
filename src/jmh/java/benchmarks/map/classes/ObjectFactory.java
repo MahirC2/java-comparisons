@@ -2,5 +2,5 @@ package benchmarks.map.classes;
 
 interface ObjectFactory<T>
 {
-    T create(String... strings);
+    T create(String... keyComponents);
 }
